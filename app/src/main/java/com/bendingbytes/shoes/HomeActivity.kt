@@ -17,13 +17,13 @@ class HomeActivity : AppCompatActivity() {
 
 
         //bottom navigation
-        val favouritesFragment= FavouritesFragment()
-        val listFragment= ListFragment()
+        val favouritesFragment = FavouritesFragment()
+        val listFragment = ListFragment()
         makeCurrentFragment(listFragment)
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.ic_baseline_format_list_numbered -> makeCurrentFragment (listFragment)
-                R.id.ic_baseline_star -> makeCurrentFragment (favouritesFragment)
+                R.id.ic_baseline_format_list_numbered -> makeCurrentFragment(listFragment)
+                R.id.ic_baseline_star -> makeCurrentFragment(favouritesFragment)
             }
             true
         }
@@ -31,32 +31,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun makeCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.bottom_navigation, fragment)
+            replace(R.id.constraintHome, fragment)
             commit()
         }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d("HomeActivity", "Bbytes onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("HomeActivity", "Bbytes onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("HomeActivity", "Bbytes onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("HomeActivity", "Bbytes onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("HomeActivity", "Bbytes onDestroy")
-    }
 }
