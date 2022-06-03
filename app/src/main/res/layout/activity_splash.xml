@@ -20,9 +20,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_speed="2"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/sneakers_animation"
-        />
+        app:lottie_speed="2" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
