@@ -1,6 +1,5 @@
 package com.bendingbytes.shoes.network
 
-import android.content.Entity
 import com.bendingbytes.shoes.domain.Shoe
 
 
