@@ -13,9 +13,9 @@ abstract class ShoeDb : RoomDatabase() {
     abstract val applicationContext: Context
     val db = databaseBuilder(
         applicationContext,
-        ShoeDb::class.java, "database-name"
+        ShoeDb::class.java, "Shoe data"
     ).build()
 
     val userDao = db.userDao()
-    val users: List<Shoe> = userDao.getAll()
+    val users: ShoeDao = userDao
 }

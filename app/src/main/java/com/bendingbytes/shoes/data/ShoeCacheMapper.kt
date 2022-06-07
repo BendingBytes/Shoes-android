@@ -2,7 +2,6 @@ package com.bendingbytes.shoes.data
 
 import com.bendingbytes.shoes.domain.Shoe
 import com.bendingbytes.shoes.network.EntityMapper
-import com.bendingbytes.shoes.network.ShoeNetworkEntity
 
 class ShoeCacheMapper : EntityMapper<ShoeData, Shoe> {
     override fun mapFromEntity(entity: ShoeData): Shoe {
