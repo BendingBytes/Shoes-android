@@ -1,5 +1,7 @@
 package com.bendingbytes.shoes.network
 
+import androidx.room.Room
+import androidx.room.Room.databaseBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -20,4 +22,6 @@ class ShoeClient {
         }
         return instance
     }
+
+
 }
