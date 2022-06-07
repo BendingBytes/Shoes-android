@@ -5,7 +5,7 @@ import androidx.room.Room.databaseBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ShoeClient {
+object  ShoeClient {
     private var instance: ShoeClient? = null
 
     private var retrofit = Retrofit.Builder()
@@ -18,7 +18,7 @@ class ShoeClient {
     @Synchronized
     fun getInstance(): ShoeClient? {
         if (instance == null) {
-            instance = ShoeClient()
+            instance = ShoeClient
         }
         return instance
     }
