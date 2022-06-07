@@ -1,9 +1,11 @@
-package com.bendingbytes.shoes.network
+package com.bendingbytes.shoes.data
 
 import com.bendingbytes.shoes.domain.Shoe
+import com.bendingbytes.shoes.network.EntityMapper
+import com.bendingbytes.shoes.network.ShoeNetworkEntity
 
-class ShoeCacheMapper : EntityMapper<ShoeNetworkEntity, Shoe> {
-    override fun mapFromEntity(entity: ShoeNetworkEntity): Shoe {
+class ShoeCacheMapper : EntityMapper<ShoeData, Shoe> {
+    override fun mapFromEntity(entity: ShoeData): Shoe {
         return Shoe(
             id = entity.id,
             name = entity.name,
@@ -13,8 +15,8 @@ class ShoeCacheMapper : EntityMapper<ShoeNetworkEntity, Shoe> {
         )
     }
 
-    override fun mapToEntity(domainModel: Shoe): ShoeNetworkEntity {
-        return ShoeNetworkEntity(
+    override fun mapToEntity(domainModel: Shoe): ShoeData {
+        return ShoeData(
             id = domainModel.id,
             name = domainModel.name,
             price = domainModel.price,
