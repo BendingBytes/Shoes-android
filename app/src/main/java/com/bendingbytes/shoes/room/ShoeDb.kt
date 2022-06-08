@@ -1,4 +1,4 @@
-package com.bendingbytes.shoes.data
+package com.bendingbytes.shoes.room
 
 import android.content.Context
 import androidx.room.Database
@@ -13,7 +13,7 @@ abstract class ShoeDb : RoomDatabase() {
     abstract val applicationContext: Context
     val db = databaseBuilder(
         applicationContext,
-        ShoeDb::class.java, "Shoe data"
+        ShoeDb::class.java, "Shoe_data"
     ).build()
 
     val userDao = db.userDao()

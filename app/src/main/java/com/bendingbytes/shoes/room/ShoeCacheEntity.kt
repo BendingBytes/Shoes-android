@@ -1,10 +1,10 @@
-package com.bendingbytes.shoes.data
+package com.bendingbytes.shoes.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class ShoeData(
+data class ShoeCacheEntity(
     @PrimaryKey
     val id: Int,
     val name: String,
