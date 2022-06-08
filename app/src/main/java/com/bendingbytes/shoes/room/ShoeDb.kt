@@ -4,18 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
-import com.bendingbytes.shoes.domain.Shoe
 
-@Database(entities = [Shoe::class], version = 1)
+@Database(entities = [ShoeCacheEntity::class], version = 1)
 abstract class ShoeDb : RoomDatabase() {
-    abstract fun userDao(): ShoeDao
+    abstract fun shoeDao(): ShoeDao
 
     abstract val applicationContext: Context
-    val db = databaseBuilder(
+    private val db = databaseBuilder(
         applicationContext,
         ShoeDb::class.java, "Shoe_data"
     ).build()
 
-    val userDao = db.userDao()
-    val users: ShoeDao = userDao
+    private val shoeDao = db.shoeDao()
+    val shoes: List<ShoeCacheEntity> = shoeDao.getAll()
 }

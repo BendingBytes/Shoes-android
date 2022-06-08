@@ -1,8 +1,6 @@
 package com.bendingbytes.shoes.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
+import androidx.room.*
 
 @Dao
 interface ShoeDao {
@@ -10,12 +8,15 @@ interface ShoeDao {
     
     fun findById(id: Int): ShoeCacheEntity
 
-    @Insert
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg user: ShoeCacheEntity)
 
-    @Insert
-    fun insertAll(vararg users: List<ShoeCacheEntity>)
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg shoes: List<ShoeCacheEntity>)
 
     @Delete
-    fun delete(user: ShoeCacheEntity)
+    fun delete(shoe: ShoeCacheEntity)
+
+    @Query("DELETE FROM  ShoeCacheEntity")
+    fun deleteAll() : List<ShoeCacheEntity>
 }
