@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.ListFragment
+import com.bendingbytes.shoes.Fragments.FavouritesFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         //bottom navigation
-        val favouritesFragment = FavouriteFragment()
+        val favouritesFragment = FavouritesFragment()
         val listFragment = ListFragment()
         makeCurrentFragment(listFragment)
         bottom_navigation.setOnNavigationItemSelectedListener {
