@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bendingbytes.shoes">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,19 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shoes"
         tools:targetApi="31">
+
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashStyle"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/SplashStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
