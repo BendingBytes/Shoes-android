@@ -15,12 +15,12 @@ class HomeActivity : AppCompatActivity() {
 
 
         //bottom navigation
-        val favouritesFragment = FavouritesFragment()
+        val favouritesFragment = FavouriteFragment()
         val listFragment = ListFragment()
         makeCurrentFragment(listFragment)
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.ic_baseline_format_list_numbered -> makeCurrentFragment(listFragment)
+                R.id.ic_baseline_format_list_bulleted -> makeCurrentFragment(listFragment)
                 R.id.ic_baseline_star -> makeCurrentFragment(favouritesFragment)
             }
             true
