@@ -19,10 +19,11 @@ class HomeActivity : AppCompatActivity() {
         val favouritesFragment = FavouritesFragment()
         val listFragment = ListFragment()
         makeCurrentFragment(listFragment)
-        bottom_navigation.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.ic_baseline_format_list_bulleted -> makeCurrentFragment(listFragment)
-                R.id.ic_baseline_star -> makeCurrentFragment(favouritesFragment)
+        
+        bottomNavigation.setOnItemSelectedListener {
+            when (it.itemId){
+                R.id.menuItemList -> makeCurrentFragment(listFragment)
+                R.id.menuItemFavorites -> makeCurrentFragment(favouritesFragment)
             }
             true
         }
@@ -30,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun makeCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.constraintHome, fragment)
+            replace(R.id.fragmentContainer, fragment)
             commit()
         }
 

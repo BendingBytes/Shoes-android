@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/ic_baseline_format_list_numbered"
+        android:id="@+id/menuItemList"
         android:icon="@drawable/ic_baseline_format_list_bulleted"
         android:title="List"
         />
 
     <item
-        android:id="@+id/ic_baseline_star"
+        android:id="@+id/menuItemFavorites"
         android:icon="@drawable/ic_baseline_star"
         android:title="Favourites"
         />
