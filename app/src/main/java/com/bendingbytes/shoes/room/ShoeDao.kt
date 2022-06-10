@@ -7,7 +7,7 @@ interface ShoeDao {
     @Query("SELECT * FROM shoes_entity")
     fun getAll(): List<ShoeCacheEntity>
 
-    @Query("SELECT * FROM shoes_entity WHERE id IN (:shoeId)")
+    @Query("SELECT * FROM shoes_entity WHERE id = :shoeId")
     fun findById(shoeId: Int): ShoeCacheEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
