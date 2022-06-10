@@ -1,4 +1,4 @@
-package com.bendingbytes.shoes.Fragments
+package com.bendingbytes.shoes.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
