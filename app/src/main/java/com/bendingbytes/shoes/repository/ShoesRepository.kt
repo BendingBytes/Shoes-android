@@ -29,11 +29,9 @@ class ShoesRepository(
         val shoesCacheEntities = shoeDao.getAll()
         val shoeList = shoeCacheMapper.mapFromListEntity(shoesCacheEntities)
         emit(DataState.Success(shoeList))
-        // todo fetch data from network then store in data base then get from base and data base
     }.flowOn(ioDispatcher)
 
     suspend fun loadShoesFromDB() : Flow<DataState<List<Shoe>>> = flow {
-        // todo load and return data from data base
         val shoesCacheEntities = shoeDao.getAll()
         val shoesDb = shoeCacheMapper.mapFromListEntity(shoesCacheEntities)
         emit(DataState.Success(shoesDb))
