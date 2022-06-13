@@ -1,8 +1,10 @@
 package com.bendingbytes.shoes
 
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bendingbytes.shoes.fragments.FavouritesFragment
 import com.bendingbytes.shoes.fragments.ListFragments
@@ -27,8 +29,17 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         }
-    }
 
+    }
+    fun updateFragment(fragments: Fragment) {
+        val mainFragment = supportFragmentManager.fragments.first { it.tag == fragments.tag }
+        Log.e(TAG, "updateFragment: $mainFragment")
+        supportFragmentManager.beginTransaction()
+            .hide(mainFragment)
+            .add(R.id.menuItemFavorites, fragments, FavouritesFragment.TAG)
+            .addToBackStack(FavouritesFragment.TAG)
+            .commit()
+    }
     private fun replaceCurrentFragment(fragments: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainer, fragments)

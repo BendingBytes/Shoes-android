@@ -49,6 +49,8 @@ class ListFragments : Fragment() {
          * @return A new instance of fragment FavouritesFragment.
          */
         // TODO: Rename and change types and number of parameters
+        val TAG: String = ListFragment::class.java.simpleName
+        fun newInstance() = ListFragment()
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ListFragments().apply {
