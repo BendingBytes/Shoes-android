@@ -18,18 +18,18 @@ class HomeActivity : AppCompatActivity() {
         //bottom navigation
         val favouritesFragment = FavouritesFragment()
         val listFragment = ListFragments()
-        makeCurrentFragment(listFragment)
+        replaceCurrentFragment(listFragment)
 
         bottomNavigation.setOnItemSelectedListener {
             when (it.itemId){
-                R.id.menuItemList -> makeCurrentFragment(listFragment)
-                R.id.menuItemFavorites -> makeCurrentFragment(favouritesFragment)
+                R.id.menuItemList -> replaceCurrentFragment(listFragment)
+                R.id.menuItemFavorites -> replaceCurrentFragment(favouritesFragment)
             }
             true
         }
     }
 
-    private fun makeCurrentFragment(fragments: Fragment) =
+    private fun replaceCurrentFragment(fragments: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainer, fragments)
             commit()
