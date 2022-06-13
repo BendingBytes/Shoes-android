@@ -1,7 +1,7 @@
 package com.bendingbytes.shoes.network
 
-interface EntityMapper<NetworkEntity, DomainEntity> {
-    fun mapFromEntity(entity: NetworkEntity): DomainEntity
+interface EntityMapper<Entity, DomainEntity> {
+    fun mapFromEntity(entity: Entity): DomainEntity
 
-    fun mapToEntity(domainModel: DomainEntity): NetworkEntity
+    fun mapToEntity(domainModel: DomainEntity): Entity
 }

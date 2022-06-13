@@ -23,4 +23,12 @@ class ShoeCacheMapper : EntityMapper<ShoeCacheEntity, Shoe> {
             description = domainModel.description
         )
     }
+
+    fun mapToListEntity(list: List<Shoe>): List<ShoeCacheEntity> {
+        return list.map { mapToEntity(it) }
+    }
+
+    fun mapFromListEntity(list: List<ShoeCacheEntity>): List<Shoe> {
+        return list.map { mapFromEntity(it) }
+    }
 }

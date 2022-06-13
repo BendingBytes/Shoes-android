@@ -2,8 +2,7 @@ package com.bendingbytes.shoes.network
 
 import com.bendingbytes.shoes.domain.Shoe
 
-
-class ShowNetworkMapper : EntityMapper<ShoeNetworkEntity, Shoe> {
+class ShoeNetworkMapper : EntityMapper<ShoeNetworkEntity, Shoe> {
     override fun mapFromEntity(entity: ShoeNetworkEntity): Shoe {
         return Shoe(
             id = entity.id,
@@ -22,5 +21,9 @@ class ShowNetworkMapper : EntityMapper<ShoeNetworkEntity, Shoe> {
             image = domainModel.image,
             description = domainModel.description
         )
+    }
+
+    fun mapFromListEntity(list: List<ShoeNetworkEntity>): List<Shoe> {
+        return list.map { mapFromEntity(it) }
     }
 }
