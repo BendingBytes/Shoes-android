@@ -15,8 +15,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         Log.d("HomeActivity", "Bbytes onCreate")
-
-
         //bottom navigation
         val favouritesFragment = FavouritesFragment()
         val listFragment = ListFragments()
@@ -29,7 +27,6 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         }
-
     }
     fun updateFragment(fragments: Fragment) {
         val mainFragment = supportFragmentManager.fragments.first { it.tag == fragments.tag }
@@ -45,5 +42,4 @@ class HomeActivity : AppCompatActivity() {
             replace(R.id.fragmentContainer, fragments)
             commit()
         }
-
 }
