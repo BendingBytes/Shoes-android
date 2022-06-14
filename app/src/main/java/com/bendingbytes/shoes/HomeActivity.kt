@@ -10,12 +10,15 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 
 class HomeActivity : AppCompatActivity() {
+
     private val favouritesFragment = FavouritesFragment.newInstance()
     private val listFragment = ListFragments.newInstance()
     private var currentFragment: Fragment = listFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
         Log.d("HomeActivity", "Bbytes onCreate")
         //bottom navigation
         initiateAllFragments()

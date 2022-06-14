@@ -9,6 +9,7 @@ import com.bendingbytes.shoes.R
 
 
 class ListFragments : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_list, container, false)
