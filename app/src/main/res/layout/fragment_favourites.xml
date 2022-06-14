@@ -8,7 +8,7 @@
     tools:context=".fragments.FavouritesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/favouritesLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/favouritesText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/favourites"
