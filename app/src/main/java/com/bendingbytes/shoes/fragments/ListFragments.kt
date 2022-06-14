@@ -7,16 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.bendingbytes.shoes.R
-import com.bendingbytes.shoes.view.ShoeModel
+import com.bendingbytes.shoes.view.ShoeViewModel
 
 
 class ListFragments : Fragment() {
 
-    private val shoeModel: ShoeModel by activityViewModels<ShoeModel>()
-
-    override fun onViewCreated(shoeModel: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(shoeModel, savedInstanceState)
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_list, container, false)
