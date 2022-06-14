@@ -15,9 +15,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 
-class ShoeModel (private val shoeCacheMapper: ShoeCacheMapper,
-                 private val shoeDao: ShoeDao,
-                 private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel()
+class ShoeViewModel (private val shoeCacheMapper: ShoeCacheMapper,
+                     private val shoeDao: ShoeDao,
+                     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel()
 {
     private val shoes: MutableLiveData<List<Shoe>> by lazy {
         MutableLiveData<List<Shoe>>().also {
