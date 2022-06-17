@@ -19,7 +19,6 @@ class ListFragments : Fragment() {
         shoeViewModel.loadShoes()
         return (inflater.inflate(R.layout.fragment_list, container, false))
     }
-
     companion object {
         fun newInstance() = ListFragments()
     }
