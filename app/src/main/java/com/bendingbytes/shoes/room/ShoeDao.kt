@@ -11,14 +11,14 @@ interface ShoeDao {
     fun findById(shoeId: Int): ShoeCacheEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg user: ShoeCacheEntity)
+    fun insert(shoe: ShoeCacheEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg shoes: List<ShoeCacheEntity>)
+    fun insertAll(shoes: List<ShoeCacheEntity>)
 
     @Delete
     fun delete(shoe: ShoeCacheEntity)
 
     @Query("DELETE FROM shoes_entity")
-    fun deleteAll(): List<ShoeCacheEntity>
+    fun deleteAll()
 }

@@ -1,6 +1,7 @@
 package com.bendingbytes.shoes.view
 
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,27 +14,26 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+
 class ShoeViewModel(
     private val shoesRepository: ShoesRepository,
 ) : ViewModel() {
+
+    val shoeLiveDataState: LiveData<DataState<List<Shoe>>>
+        get() = mutableShoeLiveDataState
+
     private val mutableShoeLiveDataState: MutableLiveData<DataState<List<Shoe>>> =
         MutableLiveData()
 
     fun loadShoes() {
         viewModelScope.launch {
-            val forceFetch: Boolean = true
-            if (forceFetch) {
-                shoesRepository.getShoes()
-                    .onEach { dataState -> mutableShoeLiveDataState.postValue(dataState) }
-                    .launchIn(this)
-            } else {
-                shoesRepository.getShoes()
-                    .onEach { dataState -> mutableShoeLiveDataState.postValue(dataState) }
-                    .catch {
-                        Timber.e(it)
-                        loadShoes()
-                    }.launchIn(this)
-            }
+            shoesRepository.getShoes()
+                .onEach { dataState -> mutableShoeLiveDataState.postValue(dataState) }
+                .launchIn(this)
         }
     }
+    fun test(){
+
+    }
 }
+

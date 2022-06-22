@@ -9,8 +9,10 @@ import com.bendingbytes.shoes.room.ShoeDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 
 class ShoesRepository(
     private val shoeNetworkMapper: ShoeNetworkMapper,
@@ -22,22 +24,27 @@ class ShoesRepository(
 
     suspend fun getShoes(): Flow<DataState<List<Shoe>>> = flow {
         emit(DataState.Loading)
+
         val listShoeNetworkEntity = shoeService.getShoes()
+        Timber.d(listShoeNetworkEntity.toString())
         val shoes = shoeNetworkMapper.mapFromListEntity(listShoeNetworkEntity)
         shoeDao.insertAll(shoeCacheMapper.mapToListEntity(shoes))
-
         val shoesCacheEntities = shoeDao.getAll()
         val shoeList = shoeCacheMapper.mapFromListEntity(shoesCacheEntities)
-        emit(DataState.Success(shoeList))
-    }.flowOn(ioDispatcher)
 
-    suspend fun loadShoesFromDB() : Flow<DataState<List<Shoe>>> = flow {
+        emit(DataState.Success(shoeList))
+    }.flowOn(ioDispatcher).catch {
+        Timber.e(it, "XXXXXX")
+        emit(DataState.Error(it))
+    }
+
+    suspend fun loadShoesFromDB(): Flow<DataState<List<Shoe>>> = flow {
         val shoesCacheEntities = shoeDao.getAll()
         val shoesDb = shoeCacheMapper.mapFromListEntity(shoesCacheEntities)
         emit(DataState.Success(shoesDb))
     }.flowOn(ioDispatcher)
 
-    suspend fun getShoeForId(id: Int) : Flow<DataState<Shoe>> = flow {
+    suspend fun getShoeForId(id: Int): Flow<DataState<Shoe>> = flow {
         emit(DataState.Loading)
         val shoeCacheEntity = shoeDao.findById(id)
         val shoe = shoeCacheMapper.mapFromEntity(shoeCacheEntity)
