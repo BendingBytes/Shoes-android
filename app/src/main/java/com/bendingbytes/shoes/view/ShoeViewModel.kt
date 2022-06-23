@@ -16,11 +16,9 @@ class ShoeViewModel(private val shoesRepository: ShoesRepository) : ViewModel() 
     fun loadShoes() {
         viewModelScope.launch {
             shoesRepository.getShoes()
-                .onEach { dataState -> mutableShoeLiveData.postValue(dataState) }.launchIn(this)
+                .onEach { dataState -> mutableShoeLiveData.postValue(dataState) }
+                .launchIn(this)
         }
-    }
-    fun test(){
-
     }
 }
 

@@ -43,11 +43,6 @@ class FavouritesFragment : Fragment() {
         return (inflater.inflate(R.layout.fragment_favourites, container, false))
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        shoeViewModel.test()
-    }
-
     companion object {
         fun newInstance() = FavouritesFragment()
     }
