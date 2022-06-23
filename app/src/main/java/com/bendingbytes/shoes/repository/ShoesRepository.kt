@@ -34,7 +34,7 @@ class ShoesRepository(
 
         emit(DataState.Success(shoeList))
     }.flowOn(ioDispatcher).catch {
-        Timber.e(it, "XXXXXX")
+        Timber.e(it)
         emit(DataState.Error(it))
     }
 

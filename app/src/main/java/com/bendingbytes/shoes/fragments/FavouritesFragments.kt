@@ -46,7 +46,6 @@ class FavouritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         shoeViewModel.test()
-        //shoeViewModel.loadShoes()
     }
 
     companion object {
