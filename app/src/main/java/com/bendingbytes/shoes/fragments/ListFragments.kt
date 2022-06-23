@@ -1,12 +1,11 @@
 package com.bendingbytes.shoes.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.room.Room
 import com.bendingbytes.shoes.R
 import com.bendingbytes.shoes.network.ShoeClient
@@ -18,11 +17,11 @@ import com.bendingbytes.shoes.view.ShoeViewModel
 import com.bendingbytes.shoes.view.ShoeViewModelFactory
 
 class ListFragments : Fragment() {
-
     private val shoeViewModel: ShoeViewModel by activityViewModels {
         val db = Room.databaseBuilder(
             requireActivity().applicationContext,
-            ShoeDb::class.java, ShoeDb.DATABASE_NAME
+            ShoeDb::class.java,
+            ShoeDb.DATABASE_NAME
         ).build()
         val shoeCacheMapper = ShoeCacheMapper()
         val shoeNetworkMapper = ShoeNetworkMapper()

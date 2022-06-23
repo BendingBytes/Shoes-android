@@ -20,10 +20,10 @@ object ShoeClient {
         return httpLoggingInterceptor
     }
 
-    val retrofit = Retrofit.Builder()
+    val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("https://shoes-collections.p.rapidapi.com/")
-        .client(getOkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
+        .client(getOkHttpClient())
         .build()
     val service: ShoeService = retrofit.create(ShoeService::class.java)
 }
