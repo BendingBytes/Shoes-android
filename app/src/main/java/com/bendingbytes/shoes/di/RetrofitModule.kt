@@ -31,7 +31,7 @@ object RetrofitModule {
     }
 
     @Provides
-    fun provideAnalyticsService(
+    fun provideShoeService(
         okHttpClient: OkHttpClient
     ): ShoeService {
         return Retrofit.Builder()
