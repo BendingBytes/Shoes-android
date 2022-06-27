@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bendingbytes.shoes.fragments.FavouritesFragment
 import com.bendingbytes.shoes.fragments.ListFragments
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.android.synthetic.main.activity_home.*
 
-
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private val favouritesFragment = FavouritesFragment.newInstance()

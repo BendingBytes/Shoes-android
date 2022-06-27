@@ -6,11 +6,18 @@ import androidx.lifecycle.viewModelScope
 import com.bendingbytes.shoes.domain.DataState
 import com.bendingbytes.shoes.domain.Shoe
 import com.bendingbytes.shoes.repository.ShoesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ShoeViewModel(private val shoesRepository: ShoesRepository) : ViewModel() {
+@HiltViewModel
+class ShoeViewModel
+@Inject
+constructor(
+    private val shoesRepository: ShoesRepository
+) : ViewModel() {
     private val mutableShoeLiveData: MutableLiveData<DataState<List<Shoe>>> = MutableLiveData()
 
     fun loadShoes() {

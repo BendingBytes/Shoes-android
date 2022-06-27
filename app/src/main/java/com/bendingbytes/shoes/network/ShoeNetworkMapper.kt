@@ -1,8 +1,10 @@
 package com.bendingbytes.shoes.network
 
 import com.bendingbytes.shoes.domain.Shoe
+import javax.inject.Inject
 
-class ShoeNetworkMapper : EntityMapper<ShoeNetworkEntity, Shoe> {
+class ShoeNetworkMapper
+@Inject constructor() : EntityMapper<ShoeNetworkEntity, Shoe> {
     override fun mapFromEntity(entity: ShoeNetworkEntity): Shoe {
         return Shoe(
             id = entity.id,

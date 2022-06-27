@@ -2,8 +2,11 @@ package com.bendingbytes.shoes.room
 
 import com.bendingbytes.shoes.domain.Shoe
 import com.bendingbytes.shoes.network.EntityMapper
+import javax.inject.Inject
 
-class ShoeCacheMapper : EntityMapper<ShoeCacheEntity, Shoe> {
+class ShoeCacheMapper
+@Inject
+constructor() : EntityMapper<ShoeCacheEntity, Shoe> {
     override fun mapFromEntity(entity: ShoeCacheEntity): Shoe {
         return Shoe(
             id = entity.id,
