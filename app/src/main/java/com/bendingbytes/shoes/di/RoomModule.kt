@@ -30,5 +30,4 @@ object RoomModule {
     fun provideShoeDao(shoeDb: ShoeDb): ShoeDao {
         return shoeDb.shoeDao()
     }
-
 }

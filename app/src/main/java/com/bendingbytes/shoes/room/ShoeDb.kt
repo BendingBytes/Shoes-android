@@ -2,8 +2,6 @@ package com.bendingbytes.shoes.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import javax.inject.Inject
-
 
 @Database(entities = [ShoeCacheEntity::class], version = 1)
 abstract class ShoeDb : RoomDatabase() {

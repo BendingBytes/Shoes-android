@@ -1,7 +1,6 @@
 package com.bendingbytes.shoes.room
 
 import androidx.room.*
-import javax.inject.Inject
 
 @Dao
 interface ShoeDao {
