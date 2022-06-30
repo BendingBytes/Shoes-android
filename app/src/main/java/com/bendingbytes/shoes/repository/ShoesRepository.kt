@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class ShoesRepository
 @Inject
@@ -28,14 +27,12 @@ constructor(
 
     suspend fun getShoes(): Flow<DataState<List<Shoe>>> = flow {
         emit(DataState.Loading)
-
         val listShoeNetworkEntity = shoeService.getShoes()
         Timber.d(listShoeNetworkEntity.toString())
         val shoes = shoeNetworkMapper.mapFromListEntity(listShoeNetworkEntity)
         shoeDao.insertAll(shoeCacheMapper.mapToListEntity(shoes))
         val shoesCacheEntities = shoeDao.getAll()
         val shoeList = shoeCacheMapper.mapFromListEntity(shoesCacheEntities)
-
         emit(DataState.Success(shoeList))
     }.flowOn(ioDispatcher).catch {
         Timber.e(it)
@@ -54,5 +51,4 @@ constructor(
         val shoe = shoeCacheMapper.mapFromEntity(shoeCacheEntity)
         emit(DataState.Success(shoe))
     }.flowOn(ioDispatcher)
-
 }

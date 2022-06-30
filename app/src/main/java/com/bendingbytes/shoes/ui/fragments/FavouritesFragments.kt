@@ -1,4 +1,4 @@
-package com.bendingbytes.shoes.fragments
+package com.bendingbytes.shoes.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bendingbytes.shoes.R
-import com.bendingbytes.shoes.view.ShoeViewModel
+import com.bendingbytes.shoes.ui.ShoeViewModel
 
 class FavouritesFragment : Fragment() {
 

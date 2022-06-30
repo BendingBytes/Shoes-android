@@ -36,6 +36,12 @@ android {
 }
 
 dependencies {
+    //Gradle
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
     //Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
@@ -58,7 +64,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
 
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    kapt "androidx.lifecycle:lifecycle-compiler:2.5.0-rc01"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.5.0-rc02"
     implementation "androidx.room:room-runtime:2.5.0-alpha02"
     kapt "androidx.room:room-compiler:2.5.0-alpha02"
 
