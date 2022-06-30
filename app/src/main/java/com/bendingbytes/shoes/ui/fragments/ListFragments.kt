@@ -58,7 +58,6 @@ class ListFragments : Fragment() {
                 }
                 is DataState.Success -> {
                     adapter.submitList(it.data)
-                    // adapter.submitList(List<Shoe> (3, it.data))
                     progressDialog.dismiss()
                 }
             }
