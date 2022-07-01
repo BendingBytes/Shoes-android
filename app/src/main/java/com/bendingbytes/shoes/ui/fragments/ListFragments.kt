@@ -15,6 +15,7 @@ import com.bendingbytes.shoes.ui.ShoeAdapter
 import com.bendingbytes.shoes.ui.ShoeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_list.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ListFragments : Fragment() {
@@ -30,7 +31,14 @@ class ListFragments : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : ShoeAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                Timber.d("You clicked on item no. $position")
+            }
+        })
+
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Wait while loading")
         shoeViewModel.loadShoes()

@@ -12,15 +12,30 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_shoe.view.*
 
 class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCallback()) {
-    inner class ShoeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+    private lateinit var mListener: OnItemClickListener
+
+    interface  OnItemClickListener{
+        fun onItemClick (position: Int)
+    }
+    fun setOnItemClickListener(listener : OnItemClickListener){
+        mListener = listener
+    }
+
+
+    inner class ShoeViewHolder(itemView: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
+
+        init {
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoeViewHolder {
-        return ShoeViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_shoe, parent, false)
-        )
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_shoe, parent, false)
+        return ShoeViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: ShoeViewHolder, position: Int) {
