@@ -31,38 +31,31 @@ class ListFragments : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         recyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : ShoeAdapter.OnItemClickListener {
-            override fun onItemClick(position: Int) {
-                Timber.d("You clicked on item no. $position")
-            }
-        })
-
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Wait while loading")
         shoeViewModel.loadShoes()
         val itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         itemDecorator.setDrawable(
-            ContextCompat.getDrawable(
-                context!!,
-                com.bendingbytes.shoes.R.drawable.divider_white
-            )!!
+            context?.let {
+                ContextCompat.getDrawable(
+                    it,
+                    com.bendingbytes.shoes.R.drawable.divider_white
+                )
+            }!!
         )
         recyclerView.addItemDecoration(itemDecorator)
+        subscribeToObservables()
+    }
+
+    private fun subscribeToObservables() {
         shoeViewModel.shoeLiveDataState.observe(viewLifecycleOwner) {
             when (it) {
                 is DataState.Loading -> {
                     progressDialog.show()
                 }
                 is DataState.Error -> {
-                    val builder = AlertDialog.Builder(context)
-                    with(builder)
-                    {
-                        setTitle("Android Alert")
-                        setMessage("We have a message")
-                        show()
-                    }
+                    dataStateError()
                 }
                 is DataState.Success -> {
                     adapter.submitList(it.data)
@@ -70,6 +63,11 @@ class ListFragments : Fragment() {
                 }
             }
         }
+    }
+    private fun dataStateError(){
+        val alertDialog = AlertDialog.Builder(context)
+        alertDialog.setMessage("Error")
+        alertDialog.setCancelable(true)
     }
 
     companion object {

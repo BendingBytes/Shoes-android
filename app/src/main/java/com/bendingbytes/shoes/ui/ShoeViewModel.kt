@@ -19,12 +19,12 @@ class ShoeViewModel
 constructor(
     private val shoesRepository: ShoesRepository
 ) : ViewModel() {
-    val shoeLiveDataState : LiveData<DataState<List<Shoe>>> get() = mutableShoeLiveData
+    val shoeLiveDataState: LiveData<DataState<List<Shoe>>> get() = mutableShoeLiveData
     private val mutableShoeLiveData: MutableLiveData<DataState<List<Shoe>>> = MutableLiveData()
 
     fun loadShoes() {
         viewModelScope.launch {
-            shoesRepository.loadShoesFromDB()
+            shoesRepository.getShoes()
                 .onEach { dataState -> mutableShoeLiveData.postValue(dataState) }
                 .launchIn(this)
         }

@@ -13,41 +13,34 @@ import kotlinx.android.synthetic.main.item_shoe.view.*
 
 class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCallback()) {
 
-    private lateinit var mListener: OnItemClickListener
+    val onItemClickListener: OnItemClickListener? = null
 
-    interface  OnItemClickListener{
-        fun onItemClick (position: Int)
-    }
-    fun setOnItemClickListener(listener : OnItemClickListener){
-        mListener = listener
+    interface OnItemClickListener : View.OnClickListener {
+
     }
 
+    inner class ShoeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    inner class ShoeViewHolder(itemView: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
-
-        init {
-            itemView.setOnClickListener{
-                listener.onItemClick(adapterPosition)
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoeViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_shoe, parent, false)
-        return ShoeViewHolder(itemView, mListener)
+        return ShoeViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ShoeViewHolder, position: Int) {
         val shoe = getItem(position)
         holder.itemView.textViewTitle.text = "Name " + shoe.name
         holder.itemView.textViewPrice.text = "Price: $" + shoe.price
+        holder.itemView.setOnClickListener(onItemClickListener)
         Glide.with(holder.itemView).load(shoe.image).into(holder.itemView.imageViewShoe)
     }
 }
 
 class ShoeItemDiffCallback : DiffUtil.ItemCallback<Shoe>() {
     override fun areItemsTheSame(oldShoe: Shoe, newShoe: Shoe): Boolean = oldShoe == newShoe
-
     override fun areContentsTheSame(oldShoe: Shoe, newShoe: Shoe): Boolean = oldShoe == newShoe
+
+
 }

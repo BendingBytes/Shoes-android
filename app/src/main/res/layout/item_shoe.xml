@@ -15,7 +15,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -23,7 +23,8 @@
         <ImageView
             android:id="@+id/imageViewShoe"
             android:layout_width="match_parent"
-            android:layout_height="155dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="h, 3:2"
             android:contentDescription="@string/list"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,5 +56,5 @@
             app:layout_constraintHorizontal_bias="0.937"
             app:layout_constraintStart_toStartOf="@+id/imageViewShoe"
             app:layout_constraintTop_toBottomOf="@+id/imageViewShoe" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
