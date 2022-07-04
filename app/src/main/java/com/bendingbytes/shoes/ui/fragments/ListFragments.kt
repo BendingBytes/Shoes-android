@@ -34,6 +34,7 @@ class ListFragments : Fragment() {
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage(getString(R.string.wait_while_loading))
 
+        recyclerView.adapter = adapter
         val itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         context?.let {
             val dividerDrawable = ContextCompat.getDrawable(it, R.drawable.divider_white)
@@ -41,10 +42,10 @@ class ListFragments : Fragment() {
                 itemDecorator.setDrawable(dividerDrawable)
             }
         }
-        recyclerView.adapter = adapter
         recyclerView.addItemDecoration(itemDecorator)
-        shoeViewModel.loadShoes()
+        
         subscribeToObservables()
+        shoeViewModel.loadShoes()
     }
 
     private fun subscribeToObservables() {
