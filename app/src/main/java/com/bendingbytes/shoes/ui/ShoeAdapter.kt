@@ -1,6 +1,5 @@
 package com.bendingbytes.shoes.ui
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_shoe.view.*
 
 class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCallback()) {
-    var onItemClickListener: OnItemClickListener? = null
+    private var onItemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
         fun onItemClick(shoe: Shoe)
@@ -28,7 +27,6 @@ class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCa
         return ShoeViewHolder(itemView)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ShoeViewHolder, position: Int) {
         val shoe: Shoe = getItem(position)
         val context: Context = holder.itemView.context

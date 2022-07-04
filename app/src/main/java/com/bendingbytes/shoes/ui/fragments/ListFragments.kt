@@ -31,10 +31,9 @@ class ListFragments : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView.adapter = adapter
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage(getString(R.string.wait_while_loading))
-        shoeViewModel.loadShoes()
+
         val itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         context?.let {
             val dividerDrawable = ContextCompat.getDrawable(it, R.drawable.divider_white)
@@ -42,7 +41,9 @@ class ListFragments : Fragment() {
                 itemDecorator.setDrawable(dividerDrawable)
             }
         }
+        recyclerView.adapter = adapter
         recyclerView.addItemDecoration(itemDecorator)
+        shoeViewModel.loadShoes()
         subscribeToObservables()
     }
 
