@@ -10,12 +10,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.bendingbytes.shoes.R
 import com.bendingbytes.shoes.domain.DataState
 import com.bendingbytes.shoes.ui.ShoeAdapter
 import com.bendingbytes.shoes.ui.ShoeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_list.*
-import timber.log.Timber
+
 
 @AndroidEntryPoint
 class ListFragments : Fragment() {
@@ -26,24 +27,23 @@ class ListFragments : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return (inflater.inflate(com.bendingbytes.shoes.R.layout.fragment_list, container, false))
+        return (inflater.inflate(R.layout.fragment_list, container, false))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
         progressDialog = ProgressDialog(context)
-        progressDialog.setMessage("Wait while loading")
+        progressDialog.setMessage(getString(R.string.wait_while_loading))
         shoeViewModel.loadShoes()
+
         val itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        itemDecorator.setDrawable(
-            context?.let {
-                ContextCompat.getDrawable(
-                    it,
-                    com.bendingbytes.shoes.R.drawable.divider_white
-                )
-            }!!
-        )
+        context?.let {
+            val dividerDrawable = ContextCompat.getDrawable(it, R.drawable.divider_white)
+            if (dividerDrawable != null) {
+                itemDecorator.setDrawable(dividerDrawable)
+            }
+        }
         recyclerView.addItemDecoration(itemDecorator)
         subscribeToObservables()
     }
@@ -55,7 +55,7 @@ class ListFragments : Fragment() {
                     progressDialog.show()
                 }
                 is DataState.Error -> {
-                    dataStateError()
+                    onDataStateError()
                 }
                 is DataState.Success -> {
                     adapter.submitList(it.data)
@@ -64,10 +64,12 @@ class ListFragments : Fragment() {
             }
         }
     }
-    private fun dataStateError(){
-        val alertDialog = AlertDialog.Builder(context)
-        alertDialog.setMessage("Error")
-        alertDialog.setCancelable(true)
+
+    private fun onDataStateError() {
+        AlertDialog.Builder(context)
+            .setMessage(getString(R.string.error))
+            .setCancelable(false)
+            .show()
     }
 
     companion object {
