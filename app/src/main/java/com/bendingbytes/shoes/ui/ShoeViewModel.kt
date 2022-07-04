@@ -1,5 +1,6 @@
-package com.bendingbytes.shoes.view
+package com.bendingbytes.shoes.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,6 +19,7 @@ class ShoeViewModel
 constructor(
     private val shoesRepository: ShoesRepository
 ) : ViewModel() {
+    val shoeLiveDataState: LiveData<DataState<List<Shoe>>> get() = mutableShoeLiveData
     private val mutableShoeLiveData: MutableLiveData<DataState<List<Shoe>>> = MutableLiveData()
 
     fun loadShoes() {

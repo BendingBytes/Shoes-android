@@ -3,6 +3,7 @@ package com.bendingbytes.shoes
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bendingbytes.shoes.ui.HomeActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {

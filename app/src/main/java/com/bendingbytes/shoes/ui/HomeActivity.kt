@@ -1,13 +1,13 @@
-package com.bendingbytes.shoes
+package com.bendingbytes.shoes.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.bendingbytes.shoes.fragments.FavouritesFragment
-import com.bendingbytes.shoes.fragments.ListFragments
+import com.bendingbytes.shoes.R
+import com.bendingbytes.shoes.ui.fragments.FavouritesFragment
+import com.bendingbytes.shoes.ui.fragments.ListFragments
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import kotlinx.android.synthetic.main.activity_home.*
 
 @AndroidEntryPoint
