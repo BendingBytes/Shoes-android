@@ -17,7 +17,6 @@ import com.bendingbytes.shoes.ui.ShoeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_list.*
 
-
 @AndroidEntryPoint
 class ListFragments : Fragment() {
     private lateinit var progressDialog: ProgressDialog
@@ -36,7 +35,6 @@ class ListFragments : Fragment() {
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage(getString(R.string.wait_while_loading))
         shoeViewModel.loadShoes()
-
         val itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         context?.let {
             val dividerDrawable = ContextCompat.getDrawable(it, R.drawable.divider_white)

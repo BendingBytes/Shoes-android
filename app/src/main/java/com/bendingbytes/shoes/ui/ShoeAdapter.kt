@@ -13,9 +13,7 @@ import com.bendingbytes.shoes.domain.Shoe
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_shoe.view.*
 
-
-class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCallback()){
-
+class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCallback()) {
     var onItemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
@@ -33,8 +31,8 @@ class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCa
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ShoeViewHolder, position: Int) {
         val shoe: Shoe = getItem(position)
-        val context : Context = holder.itemView.context
-        holder.itemView.textViewTitle.text= context.getString(R.string.name, shoe.name)
+        val context: Context = holder.itemView.context
+        holder.itemView.textViewTitle.text = context.getString(R.string.name, shoe.name)
         holder.itemView.textViewPrice.text = context.getString(R.string.price, shoe.price)
         Glide.with(holder.itemView).load(shoe.image).into(holder.itemView.imageViewShoe)
         holder.itemView.setOnClickListener { onItemClickListener?.onItemClick(getItem(holder.bindingAdapterPosition)) }
