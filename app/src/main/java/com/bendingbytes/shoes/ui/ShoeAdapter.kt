@@ -40,6 +40,6 @@ class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ShoeViewHolder>(ShoeItemDiffCa
 }
 
 class ShoeItemDiffCallback : DiffUtil.ItemCallback<Shoe>() {
-    override fun areItemsTheSame(oldShoe: Shoe, newShoe: Shoe): Boolean = oldShoe == newShoe
+    override fun areItemsTheSame(oldShoe: Shoe, newShoe: Shoe): Boolean = oldShoe.id == newShoe.id
     override fun areContentsTheSame(oldShoe: Shoe, newShoe: Shoe): Boolean = oldShoe == newShoe
 }
